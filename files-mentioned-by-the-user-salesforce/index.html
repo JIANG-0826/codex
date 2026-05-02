@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Salesforce Platform Admin Practice</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ADM-201 Practice</p>
+        <h1>Salesforce Platform Administrator</h1>
+      </div>
+      <button id="homeButton" class="ghost-button" type="button">Home</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="home-view">
+        <div class="summary-band">
+          <div>
+            <span class="metric" id="totalQuestions">148</span>
+            <span class="metric-label">Questions</span>
+          </div>
+          <div>
+            <span class="metric" id="answeredCount">0</span>
+            <span class="metric-label">Answered</span>
+          </div>
+          <div>
+            <span class="metric" id="accuracyRate">0%</span>
+            <span class="metric-label">Accuracy</span>
+          </div>
+          <div>
+            <span class="metric" id="favoriteCount">0</span>
+            <span class="metric-label">Favorites</span>
+          </div>
+          <div>
+            <span class="metric" id="wrongQuestionCount">0</span>
+            <span class="metric-label">Wrong Review</span>
+          </div>
+        </div>
+
+        <div class="mode-grid">
+          <button class="mode-tile" type="button" data-mode="random">
+            <span>Random Practice</span>
+            <small>Shuffle all questions each round</small>
+          </button>
+          <button class="mode-tile" type="button" data-mode="category">
+            <span>Topic Practice</span>
+            <small>Choose a weighted exam module</small>
+          </button>
+          <button class="mode-tile" type="button" data-mode="wrong">
+            <span>Wrong Review</span>
+            <small>Loop questions with recorded mistakes</small>
+          </button>
+          <button class="mode-tile" type="button" data-mode="favorites">
+            <span>Favorites</span>
+            <small>Practice saved questions</small>
+          </button>
+        </div>
+
+        <section class="category-section" aria-labelledby="categoryTitle">
+          <h2 id="categoryTitle">Topics By Official Weight</h2>
+          <div id="categoryList" class="category-list"></div>
+        </section>
+      </section>
+
+      <section id="quizView" class="quiz-view hidden">
+        <div class="quiz-header">
+          <div>
+            <p id="quizMode" class="eyebrow">Practice</p>
+            <h2 id="quizTitle">Question</h2>
+          </div>
+          <div class="quiz-actions">
+            <button id="favoriteButton" class="ghost-button" type="button">Save</button>
+            <button id="resetCurrentButton" class="ghost-button" type="button">Reset Mistakes</button>
+          </div>
+        </div>
+
+        <div class="progress-row">
+          <span id="progressText">1 / 1</span>
+          <span id="wrongCountText">Mistakes: 0</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressFill"></div>
+        </div>
+
+        <article class="question-panel">
+          <div class="question-meta">
+            <span id="questionNumber">Question</span>
+            <span id="questionCategory">Category</span>
+          </div>
+          <p id="questionText" class="question-text"></p>
+          <div id="optionsList" class="options-list"></div>
+        </article>
+
+        <section id="resultPanel" class="result-panel hidden" aria-live="polite">
+          <div class="result-topline">
+            <strong id="resultTitle">Result</strong>
+            <span id="correctAnswerText"></span>
+          </div>
+          <p id="explanationText"></p>
+        </section>
+
+        <div class="bottom-actions">
+          <button id="submitButton" class="primary-button" type="button">Submit Answer</button>
+          <button id="nextButton" class="secondary-button hidden" type="button">Next Question</button>
+        </div>
+      </section>
+
+      <section id="scoreView" class="score-view hidden">
+        <article class="score-panel">
+          <p class="eyebrow">Session Result</p>
+          <h2 id="scoreTitle">Practice Complete</h2>
+          <div class="score-ring" aria-label="Session score">
+            <svg width="132" height="132" viewBox="0 0 132 132">
+              <circle cx="66" cy="66" r="56" class="ring-bg"></circle>
+              <circle id="scoreCircle" cx="66" cy="66" r="56" class="ring-fg"></circle>
+            </svg>
+            <strong id="scorePercent">0%</strong>
+          </div>
+          <p id="scoreDetail" class="score-detail"></p>
+          <div class="score-grid">
+            <div><b id="sessionCorrect">0</b><span>Correct</span></div>
+            <div><b id="sessionTotal">0</b><span>Answered</span></div>
+            <div><b id="sessionWrong">0</b><span>Missed</span></div>
+          </div>
+          <div class="score-actions">
+            <button id="restartButton" class="primary-button" type="button">Practice Again</button>
+            <button id="scoreWrongButton" class="secondary-button" type="button">Review Mistakes</button>
+            <button id="scoreHomeButton" class="ghost-button" type="button">Home</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Categories use the refreshed Salesforce Platform Administrator outline effective Dec 15, 2025.
+      Progress is stored locally in this browser.
+      <button id="clearProgressButton" class="text-button" type="button">Clear local progress</button>
+    </footer>
+
+    <script src="./questions-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
